@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    line-height: 1.6; /* General readability */
+    color: #333; /* Default text color */
+    box-sizing: border-box; /* Global box-sizing */
+}
+
+/* Ensure box-sizing applies to all elements for consistent layout */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background: #e7f0ff;
+    padding: 10px 0;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    margin-bottom: 20px; /* Space below top buttons */
+}
+
+.top-btn {
+    background: #0077cc;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+    white-space: nowrap; /* Keep button text on one line */
+}
+.top-btn:hover {
+    background: #005fa3;
+    transform: translateY(-2px);
+}
+
+.category-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em; /* Larger heading */
+    color: #2c3e50; /* Darker, more professional color */
+    padding-top: 20px;
+}
+
+/* --- Product Grid and Card Styling --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adaptive columns */
+    gap: 30px; /* Increased gap for better separation */
+    padding: 20px 0;
+    justify-content: center; /* Center grid items if they don't fill the row */
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px; /* Slightly more rounded */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.18); /* Deeper, softer shadow */
+    overflow: hidden; /* Ensures content doesn't spill out */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    min-height: 480px; /* Set a fixed minimum height for uniformity across cards */
+    justify-content: space-between; /* Pushes content apart, buttons to bottom */
+}
+.product-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25); /* Stronger shadow on hover */
+}
+
+.product-image {
+    max-width: 100%;
+    height: 180px; /* Fixed height for consistency */
+    object-fit: contain; /* Ensures the whole image is visible without cropping */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.product-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; /* Allows this section to take available space for uniform card heights */
+}
+
+.product-info h3 {
+    margin: 10px 0 8px;
+    font-size: 1.4em; /* Larger heading */
+    color: #333;
+    min-height: 50px; /* Ensures consistent height for product names */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.3;
+}
+
+.product-description {
+    font-size: 0.9em;
+    color: #666;
+    margin: 5px 0 18px; /* More space below description */
+    text-align: center;
+    min-height: 75px; /* Ensures consistent height for descriptions */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limit to 4 lines */
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+}
+
+.product-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0077cc;
+    margin-bottom: 20px;
+}
+
+.qty-input {
+    width: 60px; /* Slightly wider input */
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.product-card form {
+    width: 100%;
+    margin-bottom: 8px; /* Small margin between forms/buttons */
+}
+
+.cart-btn,
+.buy-btn,
+.wishlist-btn,
+.remove-btn {
+    display: block;
+    width: calc(100% - 20px); /* Account for card padding */
+    padding: 12px 15px; /* Generous padding */
+    margin: 6px auto; /* Center buttons and provide vertical spacing */
+    border: none;
+    border-radius: 7px; /* Slightly more rounded */
+    background-color: #0077cc;
+    color: white;
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+}
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+.cart-btn:hover,
+.buy-btn:hover,
+.wishlist-btn:hover {
+    background-color: #005fa3;
+    transform: translateY(-2px);
+}
+
+.out-of-stock {
+    color: #dc3545;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    background-color: #ffeaea;
+    font-size: 0.9em;
+}
+
+/* --- Checkout Form Styling --- */
+.checkout-form {
+    max-width: 550px;
+    margin: 40px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.checkout-form h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+.checkout-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 1.1em;
+}
+.checkout-form input[type="text"],
+.checkout-form input[type="email"],
+.checkout-form input[type="tel"],
+.checkout-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+.checkout-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.checkout-form button[type="submit"] {
+    width: 100%;
+    background: #28a745;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.checkout-form button[type="submit"]:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+/* Styles for confirmation page (confirm_order.php) */
+.confirmation-message {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.confirmation-message h2 {
+    color: #28a745;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+.confirmation-message p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+}
+.confirmation-message .btn {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.confirmation-message .btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+.error-message {
+    color: #dc3545;
+}
+
+/* Adjustments for cart.php product display to align with category.php */
+.cart-summary {
+    text-align: right;
+    margin-top: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    padding-right: 20px;
+}
+
+/* Small screen adjustments */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .product-card {
+        min-height: 420px;
+        padding: 15px;
+    }
+    .product-info h3 {
+        font-size: 1.2em;
+    }
+    .product-description {
+        min-height: 60px;
+        -webkit-line-clamp: 3;
+    }
+    .checkout-form {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .checkout-form h3 {
+        font-size: 1.8em;
+    }
+    .checkout-form button[type="submit"] {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+}
